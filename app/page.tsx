@@ -1,11 +1,9 @@
-import Image from 'next/image';
-
 export default function Home() {
   return (
     <div className=" items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="max-w-3xl mx-auto space-y-8 text-lg leading-relaxed">
         <section>
-          <h1 className="text-4xl font-bold">Hi, I'm Daf</h1>
+          <h1 className="text-4xl font-bold">Hi, I&apos;m Daf</h1>
           <p className="text-2xl text-gray-600">Front-End Developer</p>
         </section>
 
