@@ -1,36 +1,46 @@
 'use client';
 import { motion } from 'framer-motion';
-import { ChevronDown, Menu } from 'lucide-react';
+import {
+  ChevronDown,
+  ExternalLink,
+  Github,
+  Linkedin,
+  Menu,
+} from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 const projects = [
   {
-    name: 'Stock Market Tracker',
+    name: 'Informium',
     url: 'https://github.com/james4-daf/stockMarketApi-next-firebase',
-    live: 'https://stocktracker.example.com',
+    live: 'https://informium.co.uk',
     description: 'Real-time financial dashboard.',
-    image: '/previews/stockmarket.png',
+    image: '/iphone.png',
+    device: 'iphone',
   },
   {
-    name: 'Coding Notes App',
+    name: 'Notes App',
     url: 'https://github.com/james4-daf/coding-notes-firebase-app',
     live: 'https://codingnotes.example.com',
     description: 'Markdown note-taking with real-time sync.',
-    image: '/previews/codingnotes.png',
+    image: '/notes.png',
+    device: 'macbook',
   },
   {
-    name: 'Todo MacPWA',
+    name: 'AI Todo',
     url: 'https://github.com/james4-daf/Todo-MacPWA',
     live: 'https://todomacpwa.example.com',
     description: 'Cross-platform PWA with native Mac-like UI.',
-    image: '/previews/todoapp.png',
+    image: '/todo.png',
+    device: 'iphone',
   },
 ];
 
 export default function PortfolioLanding() {
   const [scrolled, setScrolled] = useState(false);
   const [showIndicator, setShowIndicator] = useState(false);
-  const navItems = ['About', 'Tech', 'Projects', 'Contact'];
+  const navItems = ['About Me', 'Tech', 'Projects', 'Contact'];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -39,7 +49,7 @@ export default function PortfolioLanding() {
   }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowIndicator(true), 2000);
+    const timer = setTimeout(() => setShowIndicator(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -118,14 +128,44 @@ export default function PortfolioLanding() {
             className="snap-start h-screen relative flex items-center justify-center bg-white px-6"
           >
             <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <motion.img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-80 object-cover rounded-xl shadow-lg"
-                initial={{ scale: 0.9 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.8 }}
-              />
+              {project.device === 'iphone' ? (
+                <>
+                  {/* Mobile view */}
+                  <div className="block md:hidden p-2 mx-auto">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      width={200}
+                      height={400}
+                      className="rounded-[2rem] border-[6px] border-gray-800 dark:border-gray-800 bg-gray-800"
+                    />
+                  </div>
+                  {/* Tablet/Desktop view */}
+                  <div className="hidden md:block relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px]">
+                    <div className="h-[32px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[72px] rounded-l-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
+                    <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
+                    <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+                    <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+                      <img
+                        src={project.image}
+                        className="dark:hidden w-[272px] h-[572px] p-4 object-contain"
+                        alt={project.name}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[4px] rounded-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+                  <div className="rounded-md overflow-hidden h-[156px] md:h-[282px] bg-white dark:bg-gray-800">
+                    <img
+                      src={project.image}
+                      className="dark:hidden h-[156px] md:h-[282px] w-full rounded-lg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              )}
               <div>
                 <h3 className="text-4xl font-bold text-gray-900 mb-4">
                   {project.name}
@@ -140,7 +180,10 @@ export default function PortfolioLanding() {
                     rel="noopener noreferrer"
                     className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded text-white font-medium transition"
                   >
-                    Live
+                    <div className="flex items-center gap-2">
+                      <ExternalLink className="w-4 h-4" />
+                      <span className="text-sm">Live</span>
+                    </div>
                   </a>
                   <a
                     href={project.url}
@@ -148,7 +191,10 @@ export default function PortfolioLanding() {
                     rel="noopener noreferrer"
                     className="px-6 py-3 border border-gray-300 hover:bg-gray-100 rounded text-gray-900 font-medium transition"
                   >
-                    Code
+                    <div className="flex items-center gap-2">
+                      <Github className="w-4 h-4" />
+                      <span className="text-sm">Code</span>
+                    </div>
                   </a>
                 </div>
               </div>
