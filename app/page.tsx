@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const projects = [
   {
@@ -42,7 +43,18 @@ export default function PortfolioLanding() {
   const [scrolled, setScrolled] = useState(false);
   const [showIndicator, setShowIndicator] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navItems = ['About Me', 'Projects', 'Contact'];
+  const navItems = [
+    'About Me',
+    'Professional Experience',
+    'Projects',
+    'Contact',
+  ];
+  const notify = () => {
+    navigator.clipboard.writeText('dafjwork@gmail.com');
+    toast.info('dafjwork@gmail.com has been copied.', {
+      position: 'bottom-right',
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -136,7 +148,7 @@ export default function PortfolioLanding() {
 
         <section id="about-me">
           <div className="snap-start h-screen flex flex-col justify-center bg-white px-6">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 ">
               About Me
             </h2>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-12 max-w-4xl mx-auto">
@@ -154,7 +166,7 @@ export default function PortfolioLanding() {
               </div>
               {/* Right: Tech Stack */}
               <div className="md:w-1/2">
-                <h3 className="text-2xl font-semibold text-center md:text-left mb-4">
+                <h3 className="text-2xl font-semibold text-center md:text-left mb-4 text-blue-600">
                   Tech Stack
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800">
@@ -195,6 +207,57 @@ export default function PortfolioLanding() {
             </div>
           </div>
         </section>
+        {/* Professional Experience */}
+        <section
+          className="snap-start h-screen flex flex-col items-center justify-center bg-gray-50 px-6"
+          id="professional-experience"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+            Professional Experience
+          </h2>
+          <div className="max-w-4xl w-full space-y-8">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-semibold mb-2 text-blue-600 ml-4">
+                Elsevier Ltd
+              </h3>
+              <p className="text-gray-700 m-4 font-semibold">
+                Software Engineer III | Jan 2024 - Dec 2024
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <li>
+                  Led a full redesign of a high-traffic service (100K+
+                  users/month), improving engagement by 11%.
+                </li>
+                <li>
+                  Partnered with designers to implement responsive UI updates.
+                </li>
+                <li>Mentored junior devs and streamlined their onboarding.</li>
+              </ul>
+              <p className="text-gray-700 m-4 font-semibold">
+                Software Engineer II | Sep 2021 - Dec 2023
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <li>Spearheaded a large cross-squad codebase migration.</li>
+                <li>Built intuitive UIs based on business requirements.</li>
+                <li>Maintained comprehensive test coverage.</li>
+              </ul>
+              <p className="text-gray-700 m-4 font-semibold ">
+                Software Engineer I | Jan 2021 - Dec 2024
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-gray-700">
+                <li>Delivered a stakeholder dashboard.</li>
+                <li>
+                  Identified and remedied 4 security risks, leading to improved
+                  system reliability.
+                </li>
+                <li>
+                  Implemented a robust JavaScript codebase with bug monitoring.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {/* Project Slides */}
         <div id="projects">
           {projects.map((project) => (
@@ -287,27 +350,25 @@ export default function PortfolioLanding() {
           id="contact"
         >
           <h2 className="text-4xl md:text-5xl font-bold">
-            Let&apos;s Work Together
+            Let&apos;s Work <span className="text-blue-600">Together</span>
           </h2>
-          <p className="text-lg text-muted-foreground p-4">
+          <p className="text-lg text-muted-foreground  mx-auto max-w-2xl ">
             I&apos;m always interested in new opportunities and exciting
             projects. Let&apos;s discuss how we can bring your ideas to life.
           </p>
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={'project.url'}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={notify}
                 className="px-6 py-3 border border-gray-300 hover:bg-gray-100 rounded text-gray-900 font-medium transition"
               >
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">Email me</span>
                 </div>
-              </a>
+              </button>
               <a
-                href={'project.url'}
+                href="https://www.linkedin.com/in/dafyddjames/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 border border-gray-300 hover:bg-gray-100 rounded text-gray-900 font-medium transition"
@@ -337,6 +398,7 @@ export default function PortfolioLanding() {
           ))}
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }
