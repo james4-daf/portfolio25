@@ -412,7 +412,7 @@ export default function PortfolioLanding() {
         </div>
 
         <section
-          className="snap-start h-screen flex flex-col items-center justify-center gap-4"
+          className="snap-start h-screen flex flex-col items-center justify-center gap-4 bg:gray-800"
           id="contact"
         >
           <h2 className="text-3xl xl:text-5xl font-bold">
