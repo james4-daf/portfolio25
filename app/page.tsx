@@ -112,7 +112,7 @@ export default function PortfolioLanding() {
         {/* Hero Slide */}
         <section className="snap-start h-screen flex flex-col justify-center items-center bg-gray-50 text-gray-900 px-4">
           <motion.h1
-            className="text-6xl md:text-8xl font-extrabold text-center leading-tight"
+            className="text-5xl md:text-6xl lg:text-8xl font-extrabold text-center leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -121,7 +121,7 @@ export default function PortfolioLanding() {
             <br /> Experiences
           </motion.h1>
           <motion.p
-            className="mt-6 text-xl max-w-xl text-center text-gray-700"
+            className="mt-6 text-xl max-w-xl text-center text-gray-700 px-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -131,19 +131,6 @@ export default function PortfolioLanding() {
           </motion.p>
 
           {/* Delayed Scroll Indicator */}
-          {showIndicator && (
-            <motion.div
-              className="absolute bottom-4 flex flex-col items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="mt-2 text-gray-600 font-bold text-lg tracking-wide uppercase">
-                My projects
-              </span>
-              <ChevronDown className="w-8 h-8 text-gray-500 opacity-80" />
-            </motion.div>
-          )}
         </section>
 
         <section id="about-me">
@@ -165,7 +152,7 @@ export default function PortfolioLanding() {
                 </p>
               </div>
               {/* Right: Tech Stack */}
-              <div className="md:w-1/2">
+              <div className="md:w-1/2 sm:mb-12">
                 <h3 className="text-2xl font-semibold text-center md:text-left mb-4 text-blue-600">
                   Tech Stack
                 </h3>
@@ -212,18 +199,20 @@ export default function PortfolioLanding() {
           className="snap-start h-screen flex flex-col items-center justify-center bg-gray-50 px-6"
           id="professional-experience"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center mt-16 md:mt-16">
             Professional Experience
           </h2>
-          <div className="max-w-4xl w-full space-y-8">
+
+          {/* Desktop: full expanded list */}
+          <div className="hidden md:block max-w-4xl w-full space-y-8">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-2 text-blue-600 ml-4">
                 Elsevier Ltd
               </h3>
-              <p className="text-gray-700 m-4 font-semibold">
-                Software Engineer III | Jan 2024 - Dec 2024
+              <p className="text-gray-700 ml-4 font-semibold">
+                Software Engineer III | Jan 2024 – Dec 2024
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-6">
                 <li>
                   Led a full redesign of a high-traffic service (100K+
                   users/month), improving engagement by 11%.
@@ -233,18 +222,20 @@ export default function PortfolioLanding() {
                 </li>
                 <li>Mentored junior devs and streamlined their onboarding.</li>
               </ul>
-              <p className="text-gray-700 m-4 font-semibold">
-                Software Engineer II | Sep 2021 - Dec 2023
+
+              <p className="text-gray-700 ml-4 font-semibold">
+                Software Engineer II | Sep 2021 – Dec 2023
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4 ml-6">
                 <li>Spearheaded a large cross-squad codebase migration.</li>
                 <li>Built intuitive UIs based on business requirements.</li>
                 <li>Maintained comprehensive test coverage.</li>
               </ul>
-              <p className="text-gray-700 m-4 font-semibold ">
-                Software Engineer I | Jan 2021 - Dec 2024
+
+              <p className="text-gray-700 ml-4 font-semibold">
+                Software Engineer I | Jan 2021 – Dec 2021
               </p>
-              <ul className="list-disc list-inside space-y-2 text-gray-700">
+              <ul className="list-disc list-inside space-y-2 text-gray-700 ml-6">
                 <li>Delivered a stakeholder dashboard.</li>
                 <li>
                   Identified and remedied 4 security risks, leading to improved
@@ -254,6 +245,94 @@ export default function PortfolioLanding() {
                   Implemented a robust JavaScript codebase with bug monitoring.
                 </li>
               </ul>
+            </div>
+          </div>
+
+          {/* Mobile: accordion (collapse/expand) */}
+          <div className="flex-1 w-full overflow-y-auto">
+            <div className="md:hidden max-w-4xl w-full space-y-4">
+              {/* Role 1 */}
+              <h1 className="text-2xl font-semibold text-blue-600 mb-2 text-center ml-4">
+                Elsevier Ltd
+              </h1>
+              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <summary className="px-6 py-4 flex   justify-between items-center cursor-pointer">
+                  <span className="sm:flex sm:items-center sm:gap-2">
+                    <span className="font-semibold text-lg ">
+                      Software Engineer III
+                    </span>{' '}
+                    <span className="text-gray-600 text-sm">
+                      | Jan 2024 – Dec 2024
+                    </span>
+                  </span>
+                  <span className="text-gray-500">▸</span>
+                </summary>
+                <div className="px-6 pb-4 space-y-2 text-gray-700">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>
+                      Led a full redesign of a high-traffic service (100K+
+                      users/month), improving engagement by 11%.
+                    </li>
+                    <li>
+                      Partnered with designers to implement responsive UI
+                      updates.
+                    </li>
+                    <li>
+                      Mentored junior devs and streamlined their onboarding.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              {/* Role 2 */}
+              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <summary className="px-6 py-4 flex justify-between items-center cursor-pointer">
+                  <span className="sm:flex sm:items-center sm:gap-2">
+                    <span className="font-semibold text-lg ">
+                      Software Engineer II
+                    </span>{' '}
+                    <span className="text-gray-600 text-sm">
+                      | Sep 2021 – Dec 2023
+                    </span>
+                  </span>
+                  <span className="text-gray-500">▸</span>
+                </summary>
+                <div className="px-6 pb-4 space-y-2 text-gray-700">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Spearheaded a large cross-squad codebase migration.</li>
+                    <li>Built intuitive UIs based on business requirements.</li>
+                    <li>Maintained comprehensive test coverage.</li>
+                  </ul>
+                </div>
+              </details>
+
+              {/* Role 3 */}
+              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                <summary className="px-6 py-4 flex justify-between items-center cursor-pointer">
+                  <span className=" sm:flex sm:items-center gap-2 ">
+                    <span className="font-semibold text-lg ">
+                      Software Engineer I
+                    </span>{' '}
+                    <span className="text-gray-600 text-sm">
+                      | Jan 2021 – Dec 2021
+                    </span>
+                  </span>
+                  <span className="text-gray-500">▸</span>
+                </summary>
+                <div className="px-6 pb-4 space-y-2 text-gray-700">
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>Delivered a stakeholder dashboard.</li>
+                    <li>
+                      Identified and remedied 4 security risks, leading to
+                      improved system reliability.
+                    </li>
+                    <li>
+                      Implemented a robust JavaScript codebase with bug
+                      monitoring.
+                    </li>
+                  </ul>
+                </div>
+              </details>
             </div>
           </div>
         </section>
@@ -349,10 +428,10 @@ export default function PortfolioLanding() {
           className="snap-start h-screen flex flex-col items-center justify-center gap-4"
           id="contact"
         >
-          <h2 className="text-4xl md:text-5xl font-bold">
+          <h2 className="text-3xl xl:text-5xl font-bold">
             Let&apos;s Work <span className="text-blue-600">Together</span>
           </h2>
-          <p className="text-lg text-muted-foreground  mx-auto max-w-2xl ">
+          <p className="text-lg text-muted-foreground   max-w-2xl px-6">
             I&apos;m always interested in new opportunities and exciting
             projects. Let&apos;s discuss how we can bring your ideas to life.
           </p>
