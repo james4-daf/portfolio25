@@ -192,7 +192,7 @@ export default function PortfolioLanding() {
 
           {/* Desktop: full expanded list */}
           <div className="hidden md:block max-w-4xl w-full space-y-8">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white  p-6 rounded-lg shadow-md">
               <h3 className="text-2xl font-semibold mb-2 text-blue-600 ml-4">
                 Elsevier Ltd
               </h3>
@@ -242,7 +242,7 @@ export default function PortfolioLanding() {
               <h1 className="text-2xl font-semibold text-blue-600 mb-2 text-center ml-4">
                 Elsevier Ltd
               </h1>
-              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+              <details className="bg-white  rounded-lg shadow-md">
                 <summary className="px-6 py-4 flex   justify-between items-center cursor-pointer">
                   <span className="sm:flex sm:items-center sm:gap-2">
                     <span className="font-semibold text-lg ">
@@ -272,7 +272,7 @@ export default function PortfolioLanding() {
               </details>
 
               {/* Role 2 */}
-              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+              <details className="bg-white  rounded-lg shadow-md">
                 <summary className="px-6 py-4 flex justify-between items-center cursor-pointer">
                   <span className="sm:flex sm:items-center sm:gap-2">
                     <span className="font-semibold text-lg ">
@@ -294,7 +294,7 @@ export default function PortfolioLanding() {
               </details>
 
               {/* Role 3 */}
-              <details className="bg-white dark:bg-gray-800 rounded-lg shadow-md">
+              <details className="bg-white rounded-lg shadow-md">
                 <summary className="px-6 py-4 flex justify-between items-center cursor-pointer">
                   <span className=" sm:flex sm:items-center gap-2 ">
                     <span className="font-semibold text-lg ">
@@ -350,12 +350,12 @@ export default function PortfolioLanding() {
                       <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
                       <div className="h-[46px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -left-[17px] top-[178px] rounded-l-lg"></div>
                       <div className="h-[64px] w-[3px] bg-gray-800 dark:bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
-                      <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white dark:bg-gray-800">
+                      <div className="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white ">
                         <Image
                           src={project.image}
                           width={272}
                           height={572}
-                          className="dark:hidden w-[272px] h-[572px] p-4 object-contain"
+                          className="w-[272px] h-[572px] p-4 object-contain"
                           alt={project.name}
                         />
                       </div>
@@ -363,12 +363,12 @@ export default function PortfolioLanding() {
                   </>
                 ) : (
                   <div className="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[4px] rounded-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
-                    <div className="rounded-md overflow-hidden h-[156px] md:h-[282px] bg-white dark:bg-gray-800">
+                    <div className="rounded-md overflow-hidden h-[156px] md:h-[282px] bg-white">
                       <Image
                         src={project.image}
                         width={301}
                         height={282}
-                        className="dark:hidden h-[156px] md:h-[282px] w-full rounded-lg"
+                        className="h-[156px] md:h-[282px] w-full rounded-lg"
                         alt={project.name}
                       />
                     </div>
