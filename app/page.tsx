@@ -1,13 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import {
-  ChevronDown,
-  ExternalLink,
-  Github,
-  Linkedin,
-  Mail,
-  Menu,
-} from 'lucide-react';
+import { ExternalLink, Github, Linkedin, Mail, Menu } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -41,7 +34,6 @@ const projects = [
 
 export default function PortfolioLanding() {
   const [scrolled, setScrolled] = useState(false);
-  const [showIndicator, setShowIndicator] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navItems = [
     'About Me',
@@ -60,11 +52,6 @@ export default function PortfolioLanding() {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowIndicator(true), 2500);
-    return () => clearTimeout(timer);
   }, []);
 
   // Smooth scroll handler
